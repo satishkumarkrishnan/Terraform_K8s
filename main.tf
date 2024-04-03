@@ -14,19 +14,11 @@ data "aws_availability_zones" "available" {
   }
 }
 
-locals {
-  cluster_name = "education-eks-${random_string.suffix.result}"
-}
-
-resource "random_string" "suffix" {
-  length  = 8
-  special = false
-}
-
 module "kms" {
   source="git@github.com:satishkumarkrishnan/Terraform-KMS.git?ref=main"  
 }
 
 module "asg" {
   source="git@github.com:satishkumarkrishnan/terraform-aws-asg.git?ref=main"
+  depends_on = [module.kms]
 }
