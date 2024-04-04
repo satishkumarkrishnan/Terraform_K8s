@@ -1,4 +1,4 @@
-/*data "aws_eks_cluster" "example" {
+data "aws_eks_cluster" "example" {
   name = "example"
 }
 data "aws_eks_cluster_auth" "example" {
@@ -12,4 +12,4 @@ provider "kubernetes" {
     args        = ["eks", "get-token", "--cluster-name", var.cluster_name]
     command     = "aws"
   }
-}*/
+}
