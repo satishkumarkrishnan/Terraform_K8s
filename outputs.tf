@@ -3,15 +3,15 @@
 
 output "cluster_endpoint" {
   description = "Endpoint for EKS control plane"
-  value       = module.asg.cluster_endpoint
+  value       = aws_eks_cluster.tokyo_EKS.cluster_id
 }
 
 output "cluster_security_group_id" {
   description = "Security group ids attached to the cluster control plane"
-  value       = module.asg.cluster_security_group_id
+  value       = aws_eks_cluster.tokyo_EKS.status
 }
 
 output "cluster_name" {
   description = "Kubernetes Cluster Name"
-  value       = module.asg.cluster_name
+  value       = aws_eks_cluster.tokyo_EKS.name
 }
