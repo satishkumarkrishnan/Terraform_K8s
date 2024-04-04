@@ -5,7 +5,7 @@ provider "aws" {
   region = var.region
 }
 
-module "asg" {
+module "eks" {
   source="git@github.com:satishkumarkrishnan/terraform-aws-asg.git?ref=main"  
 }
 
