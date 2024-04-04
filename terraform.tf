@@ -29,7 +29,12 @@ terraform {
       source  = "hashicorp/cloudinit"
       version = "~> 2.3.2"
     }
+
+    kubernetes = {
+    config_path    = "~/.kube/config"
+    config_context = "my-context"
   }
+}
 
   required_version = "~> 1.3"
 }
