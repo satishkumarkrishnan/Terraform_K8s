@@ -53,8 +53,8 @@ resource "aws_cloudwatch_log_group" "tokyo_cloud_watch" {
   name              = "/aws/eks/${var.cluster_name}/cluster"
   retention_in_days = 7
 }
-resource "kubernetes_namespace" "example" {
-  metadata {
-    name = "tokyo-namespace"
-  }
-}
+#resource "kubernetes_namespace" "example" {
+#  metadata {
+#    name = "tokyo-namespace"
+#  }
+#}
