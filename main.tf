@@ -29,7 +29,7 @@ resource "aws_eks_cluster" "tokyo_EKS" {
 }
 
 # To create IAM role for EKS
-/*resource "aws_iam_role" "tokyo_IAM_EKS_role" {
+resource "aws_iam_role" "tokyo_IAM_EKS_role" {
   name = "tokyo_EKS_role"
 
   # Terraform's "jsonencode" function converts a
@@ -67,7 +67,7 @@ resource "aws_eks_cluster" "tokyo_EKS" {
   tags = {
     tag-key = "Tokyo_EKS_role"
   }
-}*/
+}
 
 resource "aws_iam_role" "tokyo_IAM_EKS_role" {
   name               = "tokyo-eks-policy"
