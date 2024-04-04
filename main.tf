@@ -59,7 +59,7 @@ resource "aws_iam_role" "tokyo_IAM_EKS_role" {
         {
             "Effect": "Allow",
             "Action": "ssm:GetParameter",
-            "Resource": "arn:aws:ssm:*:515149434592:parameter/*"
+            "Resource": "arn:aws:ssm:*:515149434592:parameter/*"            
         }
     ]
   })

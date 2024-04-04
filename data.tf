@@ -1,15 +1,42 @@
-/*data "aws_eks_cluster" "example" {
+data "aws_eks_cluster" "example" {
   name = "example"
 }
 data "aws_eks_cluster_auth" "example" {
   name = "example"
 }
-provider "kubernetes" {
-  host                   = data.aws_eks_cluster.example.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.example.certificate_authority[0].data)
-  exec {
-    api_version = "client.authentication.k8s.io/v1beta1"
-    args        = ["eks", "get-token", "--cluster-name", var.cluster_name]
-    command     = "aws"
+
+# Allow EKS instances to assume the role
+data "aws_iam_policy_document" "eks_assume_role_policy" {
+  statement {
+    actions = [
+      "sts:AssumeRole"
+    ]
+    effect = "Allow"
+    principals {
+      type        = "Service"
+      identifiers = ["eks.amazonaws.com"]
+    }
+
   }
-}*/
+}
+
+# Create the policy which allows other actions for the EKS instance
+data "aws_iam_policy_document" "eks_access_role_policy" {
+  statement {
+    actions = [
+      "eks:ListFargateProfiles",
+      "eks:DescribeNodegroup",
+      "eks:ListNodegroups",
+      "eks:ListUpdates",
+      "eks:AccessKubernetesApi",
+      "eks:ListAddons",
+      "eks:DescribeCluster",
+      "eks:DescribeAddonVersions",
+      "eks:ListClusters",
+      "eks:ListIdentityProviderConfigs",
+      "iam:ListRoles"
+    ]
+    effect = "Allow"
+    resources = ["*"]
+  }
+}
