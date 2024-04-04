@@ -1,6 +1,6 @@
-data "aws_eks_cluster" "example" {
+/*data "aws_eks_cluster" "example" {
   name = "example"
-}
+}*/
 data "aws_eks_cluster_auth" "example" {
   name = "example"
 }
