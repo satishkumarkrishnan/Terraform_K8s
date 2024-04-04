@@ -83,7 +83,7 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEKSVPCResourceControlle
 }
 
 # To create cloudwatch log group
-/*resource "aws_cloudwatch_log_group" "tokyo_cloud_watch" {
+resource "aws_cloudwatch_log_group" "tokyo_cloud_watch" {
   # The log group name format is /aws/eks/<cluster-name>/cluster
   # Reference: https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html
   name              = "/aws/eks/${var.cluster_name}/cluster"
@@ -93,4 +93,4 @@ resource "kubernetes_namespace" "example" {
   metadata {
     name = "tokyo-namespace"
   }
-}*/
+}
