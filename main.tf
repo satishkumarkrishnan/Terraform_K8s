@@ -16,7 +16,7 @@ resource "aws_eks_cluster" "tokyo_EKS" {
   enabled_cluster_log_types = ["api", "audit"]
   name                      = var.cluster_name
   vpc_config {
-    subnet_ids = [module.eks.vpc_fe_subnet.id, module.eks.vpc_be_subnet.id]    
+    subnet_ids = [module.asg.vpc_fe_subnet.id, module.asg.vpc_be_subnet.id]    
   }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
