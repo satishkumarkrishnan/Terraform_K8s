@@ -10,10 +10,11 @@ module "asg" {
 resource "aws_eks_cluster" "tokyo_EKS" {
   name     = "Tokyo_EKS"
   role_arn                  = aws_iam_role.tokyo_IAM_EKS_role.arn
-  enabled_cluster_log_types = ["api", "audit"]  
+  enabled_cluster_log_types = ["api", "audit"]    
   vpc_config {
     subnet_ids = [module.asg.vpc_fe_subnet.id, module.asg.vpc_be_subnet.id]    
   }
+  
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
   # Otherwise, EKS will not be able to properly delete EKS managed EC2 infrastructure such as Security Groups.
