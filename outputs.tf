@@ -15,3 +15,8 @@ output "cluster_name" {
   description = "Kubernetes Cluster Name"
   value       = aws_eks_cluster.tokyo_EKS.name
 }
+
+output "region" {
+  description = "AWS region"
+  value       = var.region
+}
